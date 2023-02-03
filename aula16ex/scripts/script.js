@@ -1,42 +1,69 @@
-var vet = []
+let vet = []
+let num = document.getElementById('num')
+let sel = document.getElementById('valAdd')
+let res = document.getElementById('res')
+
+function numeroInvalido(n) {
+    if (Number(n) <= 0 || Number(n) > 100 ) {
+        return true 
+    } else {
+        return false
+    }
+}
+
+function numeroExistente(n, v) {
+    if (v.indexOf(Number(n)) != -1) {
+        return true
+    } else {
+        return false
+    }
+}
 
 function addValores() {
-    let num = document.getElementById('num')
-    let val = Number(num.value)
-    let sel = document.getElementById('valAdd')
-
-    if (val <= 0 || val > 100) {
-        alert('Número inválido! Insira um número entre 1 e 100')
+    if (numeroInvalido(num.value) || numeroExistente(num.value, vet)) {
+        alert('Número inválido ou já existente na lista!')
     } else {
         sel.innerHTML = ""
-        vet.push(val)
+        vet.push(Number(num.value))
         for (pos in vet) {
             let item = document.createElement('option')
             item.text = `Valor ${vet[pos]} adicionado`
             sel.appendChild(item)
+            res.innerHTML = ''
         }
     }
+    num.value = ''
+    num.focus()
 }
 
 function finalizar() {
-    let num = document.getElementById('num')
-    let val = Number(num.value)
-    let res = document.getElementById('res')
     let maiorVal = Math.max.apply(res, vet)
     let menorVal = Math.min.apply(res, vet)
     let soma = 0
 
-    if (val <= 0 || val > 100) {
-        alert('Número inválido! Insira um número entre 1 e 100')
+    if (vet == '') {
+        alert('Insira números antes de finalizar!')
     } else {
-        for (var i = 0; i < vet.length; i++) {
-            soma += vet[i]
+        for (let pos in vet) {
+            soma += vet[pos]
         }
-        res.innerHTML = `Ao todo, temos ${vet.length} números cadastrados.<br>`
-        res.innerHTML += `O maior valor informado foi ${maiorVal}.<br>`
-        res.innerHTML += `O menor valor informado foi ${menorVal}.<br>`
-        res.innerHTML += `Somando todos os valores temos ${soma}.<br>`
-        res.innerHTML += `A média dos valores digitados é ${soma/vet.length}.`
+        res.innerHTML = `<p>Ao todo, temos ${vet.length} números cadastrados.</p>`
+        res.innerHTML += `<p>O maior valor informado foi ${maiorVal}.</p>`
+        res.innerHTML += `<p>O menor valor informado foi ${menorVal}.</p>`
+        res.innerHTML += `<p>Somando todos os valores, temos ${soma}.</p>`
+        res.innerHTML += `<p>A média dos valores digitados é ${soma/vet.length}.</p>`
     }
 }
 
+function limparDados() {
+    vet = []
+    num.innerHTML = ''
+    sel.innerText = ''
+    res.innerHTML = ''
+}
+
+function handle(e) {
+    if (e.keyCode == 13) {
+        addValores()
+    }
+}
