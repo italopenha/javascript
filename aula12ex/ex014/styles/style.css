@@ -9,13 +9,22 @@ header {
     text-align: center;
 }
 
+main {
+    height: 100vh;
+    position: relative;
+}
+
 section {
     background-color: white;
     border-radius: 10px;
     padding: 15px;
-    width: 500px;
-    margin: auto;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.315);
+    height: 400px;
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 section > div {
@@ -29,9 +38,4 @@ section > div > img {
     width: 250px;
     height: 250px;
     border-radius: 50%;
-}
-
-footer {
-    text-align: center;
-    font-style: italic;
 }
