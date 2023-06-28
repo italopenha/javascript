@@ -5,13 +5,16 @@ body {
     color: white;
 }
 
-header {
-    text-align: center;
+main {
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-main {
-    height: 100vh;
-    position: relative;
+h1 {
+    padding: 0px 0px 100px 0px;
 }
 
 section {
@@ -21,20 +24,16 @@ section {
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.315);
     height: 400px;
     width: 400px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
 }
 
-section > div {
+section>div {
     text-align: center;
     padding: 10px;
     color: black;
     font-size: 3em;
 }
 
-section > div > img {
+section>div>img {
     width: 250px;
     height: 250px;
     border-radius: 50%;
