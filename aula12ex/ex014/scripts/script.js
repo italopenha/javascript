@@ -1,14 +1,20 @@
 setInterval(carregar, 1000)
 
 function carregar() {
+    var data = document.getElementById('data')
     var titulo = document.querySelector("h1")
     var msg = document.getElementById('msg')
     var img = document.getElementById('imagem')
-    var data = new Date()
-    var horas = String(data.getHours()).padStart(2, "0")
-    var minutos = String(data.getMinutes()).padStart(2, "0")
-    var segundos = String(data.getSeconds()).padStart(2, "0")
+    var d = new Date()
+    var dia = d.getDate()
+    const meses = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
+    var mes = meses[d.getMonth()]
+    var ano = d.getFullYear()
+    var horas = String(d.getHours()).padStart(2, "0")
+    var minutos = String(d.getMinutes()).padStart(2, "0")
+    var segundos = String(d.getSeconds()).padStart(2, "0")
     msg.innerHTML = (`${horas}:${minutos}:${segundos}`)
+    data.innerHTML = (`${dia}/${mes}/${ano}`)
 
     if (horas >= 6 && horas < 12) {
         img.src = 'imgs/manha.jpg'
