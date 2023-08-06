@@ -7,6 +7,8 @@ function carregar() {
     var img = document.getElementById('imagem')
     var d = new Date()
     var dia = d.getDate()
+    if (dia < 10)
+        dia = String(d.getDate()).padStart(2, "0");
     const meses = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
     var mes = meses[d.getMonth()]
     var ano = d.getFullYear()
